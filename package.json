@@ -1,10 +1,8 @@
 {
-  "name": "Mitchell_BCS350_Project2",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "@prisma/client": "^7.8.0"
   },
-  "private": true
+  "devDependencies": {
+    "@types/node": "^25.8.0"
+  }
 }

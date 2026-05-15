@@ -10,16 +10,24 @@ usernameInput.addEventListener("change", checkUsername);
 let passwordInput = document.getElementById("password");
 passwordInput.addEventListener("change", checkPassword);
 
+let usernameError = document.getElementById("username");
+let passwordError = document.getElementById("username");
+
 function checkUsername() {
     let username = usernameInput.value;
     let usernameRegex = /[A-Za-z0-9]/;
 
-    if (!usernameRegex.test(username)) {
-        //add warning "Username can only use letters and numbers"
+    if (username.length < 1) {
+        usernameError.innerText = "Username is required";
         validUsername = false;
         return;
     }
-    if (false) { //db already has this user
+    if (!usernameRegex.test(username)) {
+        usernameError.innerText = "Username can only use letters and numbers";
+        validUsername = false;
+        return;
+    }
+    if (false) { // check if db already has this user
         validUsername = false;
         return;
     }
@@ -32,23 +40,28 @@ function checkPassword() {
     let lowerRegex = /[a-z]/;
     let numberRegex = /[0-9]/;
 
-    if (password.length < 16) {
-        //warning about length
+    if (password.length < 1) {
+        passwordError.innerText = "Password is required";
+        validUsername = false;
+        return;
+    }
+    if (password.length > 1 && password.length < 6) {
+        passwordError.innerText = "Password needs to be at least 6 characters";
         validPassword = false;
         return;
     }
     if (!upperRegex.test(password)) {
-        //warning about upper
+        passwordError.innerText = "Password needs to have at least 1 uppercase letter";
         validPassword = false;
         return;
     }
     if (!lowerRegex.test(password)) {
-        //warning about lower
+        passwordError.innerText = "Password needs to have at least 1 lowercase letter";
         validPassword = false;
         return;
     }
     if (!numberRegex.test(password)) {
-        //warning about number
+        passwordError.innerText = "Password needs to have at least 1 number";
         validPassword = false;
         return;
     }

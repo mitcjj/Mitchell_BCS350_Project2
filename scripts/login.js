@@ -14,7 +14,7 @@ function checkCredentials() {
 }
 
 function checkForm(e) {
-    if(!checkCredentials()) return;{
+    if(!checkCredentials()) {
         e.preventDefault();
     }
 

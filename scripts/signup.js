@@ -12,7 +12,7 @@ passwordInput.addEventListener("change", checkPassword);
 
 function checkUsername() {
     let username = usernameInput.value;
-    let usernameRegex = /^[A-Za-z0-9]/;
+    let usernameRegex = /[A-Za-z0-9]/;
 
     if (!usernameRegex.test(username)) {
         //add warning "Username can only use letters and numbers"
@@ -56,7 +56,7 @@ function checkPassword() {
 }
 
 function checkForm(e) {
-    if(!validUsername || !validPassword) return;{
+    if(!validUsername || !validPassword) {
         e.preventDefault();
     }
 }

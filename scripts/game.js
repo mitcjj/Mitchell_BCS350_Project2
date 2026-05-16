@@ -1,5 +1,5 @@
 const questions = [];
-const quizQuestions = [];
+let quizQuestions = [];
 let score = 0;
 let qNumber = 0;
 const form = document.getElementById("quiz");

@@ -59,7 +59,7 @@ function checkAnswer() {
     let answer = form.elements["answer"].value;
     if (answer === currentQuestion.answer) {
         score++;
-        document.getElementById("score").innerText =
+        document.getElementById("currentScore").innerText =
             "Current Score: " + score;
     }
     qNumber++;

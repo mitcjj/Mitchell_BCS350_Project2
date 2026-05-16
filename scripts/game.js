@@ -17,35 +17,48 @@ fetch('/Mitchell_BCS350_Project2/backend/questions.json')
     });
 
 function setQuestions() {
+    let shuffled = [...questions].sort(() => Math.random() - 0.5);
+
     for (let i = 0; i < 10; i++) {
-        let x = Math.floor(Math.random() * questions.length);
-        quizQuestions.push(questions[x]);
+        quizQuestions.push(shuffled[i]);
     }
 }
 
 function getQuestion() {
-    let qTitle = document.getElementById("title");
-    qTitle.innerText = "Question #" + (qNumber + 1);
-    let question = document.getElementById("question");
-    question.innerText = questions[qNumber]["question"];
-    let a = document.getElementById("answer1Label");
-    a.innerText = quizQuestions[qNumber]["A"];
-    let b = document.getElementById("answer2Label");
-    b.innerText = quizQuestions[qNumber]["B"];
-    let c = document.getElementById("answer3Label");
-    c.innerText = quizQuestions[qNumber]["C"];
-    let d = document.getElementById("answer4Label");
-    d.innerText = quizQuestions[qNumber]["D"];
+    let currentQuestion = quizQuestions[qNumber];
+
+    document.getElementById("title").innerText =
+        "Question #" + (qNumber + 1);
+
+    document.getElementById("question").innerText =
+        currentQuestion.question;
+
+    document.getElementById("answer1Label").innerText =
+        currentQuestion.A;
+
+    document.getElementById("answer2Label").innerText =
+        currentQuestion.B;
+
+    document.getElementById("answer3Label").innerText =
+        currentQuestion.C;
+
+    document.getElementById("answer4Label").innerText =
+        currentQuestion.D;
+
+    document.querySelectorAll('input[name="answer"]')
+        .forEach(r => r.checked = false);
 }
 
 function checkAnswer() {
-    if (!quizQuestions[qNumber]) {
+    let currentQuestion = quizQuestions[qNumber];
+
+    if (!currentQuestion) {
         console.log("No question found");
         return;
     }
 
     let answer = form.elements["answer"].value;
-    if (answer === quizQuestions[qNumber]["answer"]) {
+    if (answer === currentQuestion.answer) {
         score++;
     }
     qNumber++;

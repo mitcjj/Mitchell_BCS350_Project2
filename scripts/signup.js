@@ -48,10 +48,6 @@ function checkPassword() {
         passwordError.innerText = "Password is required";
         return false;
     }
-    if (password.length >= 1 && password.length < 6) {
-        passwordError.innerText = "Password needs to be at least 6 characters";
-        return false;
-    }
     if (!upperRegex.test(password)) {
         passwordError.innerText = "Password needs to have at least 1 uppercase letter";
         return false;
@@ -62,6 +58,10 @@ function checkPassword() {
     }
     if (!numberRegex.test(password)) {
         passwordError.innerText = "Password needs to have at least 1 number";
+        return false;
+    }
+    if (password.length >= 1 && password.length < 6) {
+        passwordError.innerText = "Password needs to be at least 6 characters";
         return false;
     }
     passwordError.innerText = "";

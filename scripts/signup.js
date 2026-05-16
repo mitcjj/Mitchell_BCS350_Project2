@@ -1,5 +1,14 @@
 let signup = document.getElementById("signupForm");
-signup.addEventListener("submit", checkForm);
+signup.addEventListener("submit", function(e) {
+
+    let validUsername = checkUsername();
+    let validPassword = checkPassword();
+
+    if (!validUsername || !validPassword) {
+        e.preventDefault();
+        return false;
+    }
+});
 
 let usernameInput = document.getElementById("username");
 usernameInput.addEventListener("change", checkUsername);
@@ -39,7 +48,7 @@ function checkPassword() {
         passwordError.innerText = "Password is required";
         return false;
     }
-    if (password.length > 1 && password.length < 6) {
+    if (password.length >= 1 && password.length < 6) {
         passwordError.innerText = "Password needs to be at least 6 characters";
         return false;
     }
@@ -57,12 +66,4 @@ function checkPassword() {
     }
     passwordError.innerText = "";
     return true;
-}
-
-function checkForm(e) {
-    let validUsername = checkUsername();
-    let validPassword = checkPassword();
-    if(!validUsername || !validPassword) {
-        e.preventDefault();
-    }
 }

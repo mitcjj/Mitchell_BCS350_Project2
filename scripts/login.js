@@ -1,5 +1,13 @@
 let login = document.getElementById("loginForm");
-login.addEventListener("submit", checkCredentials);
+login.addEventListener("submit", function(e) {
+    let validCredentials = checkCredentials()
+
+    if (!validCredentials) {
+        e.preventDefault();
+        return false;
+    }
+});
+
 
 let usernameInput = document.getElementById("username");
 let passwordInput = document.getElementById("password");
@@ -22,11 +30,4 @@ function checkCredentials() {
     }
     //test user and password in db
     return true;
-}
-
-function checkForm(e) {
-    if(!checkCredentials()) {
-        e.preventDefault();
-    }
-
 }

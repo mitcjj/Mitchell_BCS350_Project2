@@ -4,10 +4,12 @@ let score = 0;
 let qNumber = 0;
 const form = document.getElementById("quiz");
 
-fetch('../backend/questions.json')
+fetch('backend/questions.json')
     .then(response => response.json())
     .then(data => {
         questions.push(...data);
+
+        console.log(questions);//debugging
 
         setQuestions();
         getQuestion();

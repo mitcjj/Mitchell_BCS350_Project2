@@ -17,10 +17,9 @@ fetch('/Mitchell_BCS350_Project2/backend/questions.json')
     });
 
 function setQuestions() {
-    let shuffled = [...questions].sort(() => Math.random() - 0.5);
-
     for (let i = 0; i < 10; i++) {
-        quizQuestions.push(shuffled[i]);
+        let question = questions[Math.floor(Math.random() * questions.length)];
+        quizQuestions.push(questions[question]);
     }
 }
 
@@ -60,6 +59,8 @@ function checkAnswer() {
     let answer = form.elements["answer"].value;
     if (answer === currentQuestion.answer) {
         score++;
+        document.getElementById("score").innerText =
+            "Current Score: " + score;
     }
     qNumber++;
     if(qNumber >= 10) {

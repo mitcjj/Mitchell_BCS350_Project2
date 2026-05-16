@@ -1,22 +1,20 @@
-const fs = require('fs');
 const questions = [];
 const quizQuestions = [];
 let score = 0;
 let qNumber = 0;
 const form = document.getElementById("quiz");
 
-fs.readFile('../backend/questions.json', 'utf8', (err, jsonString) => {
-    if (err) {
-        console.log("File read failed:", err);
-        return;
-    }
-    try {
-        const data = JSON.parse(jsonString);
-        questions.push(data);
-    } catch (err) {
-        console.log('Error parsing JSON string:', err);
-    }
-});
+fetch('../backend/questions.json')
+    .then(response => response.json())
+    .then(data => {
+        questions.push(...data);
+
+        setQuestions();
+        getQuestion();
+    })
+    .catch(error => {
+        console.log("Error loading questions:", error);
+    });
 
 function setQuestions() {
     for (let i = 0; i < 10; i++) {
@@ -27,15 +25,15 @@ function setQuestions() {
 
 function getQuestion() {
     let qTitle = document.getElementById("question");
-    qTitle.innerText = "Question #" + (questions[qNumber] + 1);
+    qTitle.innerText = "Question #" + (qNumber + 1);
     let a = document.getElementById("answer1Label");
-    a.innerText = questions[qNumber]["A"];
+    a.innerText = quizQuestions[qNumber]["A"];
     let b = document.getElementById("answer2Label");
-    a.innerText = questions[qNumber]["B"];
+    b.innerText = quizQuestions[qNumber]["B"];
     let c = document.getElementById("answer3Label");
-    a.innerText = questions[qNumber]["C"];
+    c.innerText = quizQuestions[qNumber]["C"];
     let d = document.getElementById("answer4Label");
-    a.innerText = questions[qNumber]["D"];
+    d.innerText = quizQuestions[qNumber]["D"];
 }
 
 function checkAnswer() {

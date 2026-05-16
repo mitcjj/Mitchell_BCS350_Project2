@@ -26,8 +26,10 @@ function setQuestions() {
 }
 
 function getQuestion() {
-    let qTitle = document.getElementById("question");
+    let qTitle = document.getElementById("title");
     qTitle.innerText = "Question #" + (qNumber + 1);
+    let question = document.getElementById("title");
+    question.innerText = questions[qNumber]["question"];
     let a = document.getElementById("answer1Label");
     a.innerText = quizQuestions[qNumber]["A"];
     let b = document.getElementById("answer2Label");
@@ -39,8 +41,13 @@ function getQuestion() {
 }
 
 function checkAnswer() {
+    if (!quizQuestions[qNumber]) {
+        console.log("No question found");
+        return;
+    }
+
     let answer = form.elements["answer"].value;
-    if (answer === quizQuestions[qNumber].answer) {
+    if (answer === quizQuestions[qNumber]["answer"]) {
         score++;
     }
     qNumber++;

@@ -1,4 +1,4 @@
-let login = document.querySelector("#loginForm");
+let login = document.getElementById("validate");
 login.addEventListener("submit", checkCredentials);
 
 let validCredentials = false;

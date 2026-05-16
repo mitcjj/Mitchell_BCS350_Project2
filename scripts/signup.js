@@ -1,4 +1,4 @@
-let signup = document.querySelector("#signupForm");
+let signup = document.getElementById("validate");
 signup.addEventListener("submit", checkForm);
 
 let validUsername = false;

@@ -1,4 +1,4 @@
-let signup = document.getElementById("validate");
+let signup = document.getElementById("signupForm");
 signup.addEventListener("submit", checkForm);
 
 let validUsername = false;
@@ -10,12 +10,12 @@ usernameInput.addEventListener("change", checkUsername);
 let passwordInput = document.getElementById("password");
 passwordInput.addEventListener("change", checkPassword);
 
-let usernameError = document.getElementById("username");
-let passwordError = document.getElementById("username");
+let usernameError = document.getElementById("usernameError");
+let passwordError = document.getElementById("passwordError");
 
 function checkUsername() {
     let username = usernameInput.value;
-    let usernameRegex = /[A-Za-z0-9]/;
+    let usernameRegex = /^[A-Za-z0-9]+$/;
 
     if (username.length < 1) {
         usernameError.innerText = "Username is required";
@@ -31,6 +31,7 @@ function checkUsername() {
         validUsername = false;
         return;
     }
+    usernameError.innerText = "";
     validUsername = true;
 }
 
@@ -42,7 +43,7 @@ function checkPassword() {
 
     if (password.length < 1) {
         passwordError.innerText = "Password is required";
-        validUsername = false;
+        validPassword = false;
         return;
     }
     if (password.length > 1 && password.length < 6) {
@@ -65,6 +66,7 @@ function checkPassword() {
         validPassword = false;
         return;
     }
+    passwordError.innerText = "";
     validPassword = true;
 }
 

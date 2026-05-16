@@ -8,25 +8,21 @@
 </head>
 <body>
     <h1>Log in to your account</h1>
-    <form id="loginForm" method="POST" action="quiz.html">
+    <form id="loginForm" action="quiz.html">
         <p>
             <label for="username">Enter your username: </label>
         </p>
         <p>
             <input type="text" name="username" id="username" placeholder="Username" required>
         </p>
-        <p>
-            <span id="usernameError"></span>
-        </p>
+        <p id="usernameError"></p>
         <p>
             <label for="password">Enter your password: </label>
         </p>
         <p>
             <input type="password" name="password" id="password" placeholder="Password" required>
         </p>
-        <p>
-            <span id="passwordError"></span>
-        </p>
+        <p id="passwordError"></p>
         <input type="submit" id="validate" value="Log In">
     </form>
 </body>

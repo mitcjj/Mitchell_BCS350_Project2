@@ -26,7 +26,7 @@ function setQuestions() {
 function getQuestion() {
     let qTitle = document.getElementById("title");
     qTitle.innerText = "Question #" + (qNumber + 1);
-    let question = document.getElementById("title");
+    let question = document.getElementById("question");
     question.innerText = questions[qNumber]["question"];
     let a = document.getElementById("answer1Label");
     a.innerText = quizQuestions[qNumber]["A"];

@@ -1,8 +1,6 @@
 let login = document.getElementById("loginForm");
 login.addEventListener("submit", checkCredentials);
 
-let validCredentials = false;
-
 let usernameInput = document.getElementById("username");
 let passwordInput = document.getElementById("password");
 let usernameError = document.getElementById("usernameError");

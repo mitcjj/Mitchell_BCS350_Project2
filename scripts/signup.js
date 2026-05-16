@@ -1,9 +1,6 @@
 let signup = document.getElementById("signupForm");
 signup.addEventListener("submit", checkForm);
 
-let validUsername = false;
-let validPassword = false;
-
 let usernameInput = document.getElementById("username");
 usernameInput.addEventListener("change", checkUsername);
 
@@ -19,20 +16,17 @@ function checkUsername() {
 
     if (username.length < 1) {
         usernameError.innerText = "Username is required";
-        validUsername = false;
-        return;
+        return false;
     }
     if (!usernameRegex.test(username)) {
         usernameError.innerText = "Username can only use letters and numbers";
-        validUsername = false;
-        return;
+        return false;
     }
     if (false) { // check if db already has this user
-        validUsername = false;
-        return;
+        return false;
     }
     usernameError.innerText = "";
-    validUsername = true;
+    return true;
 }
 
 function checkPassword() {
@@ -43,34 +37,31 @@ function checkPassword() {
 
     if (password.length < 1) {
         passwordError.innerText = "Password is required";
-        validPassword = false;
-        return;
+        return false;
     }
     if (password.length > 1 && password.length < 6) {
         passwordError.innerText = "Password needs to be at least 6 characters";
-        validPassword = false;
-        return;
+        return false;
     }
     if (!upperRegex.test(password)) {
         passwordError.innerText = "Password needs to have at least 1 uppercase letter";
-        validPassword = false;
-        return;
+        return false;
     }
     if (!lowerRegex.test(password)) {
         passwordError.innerText = "Password needs to have at least 1 lowercase letter";
-        validPassword = false;
-        return;
+        return false;
     }
     if (!numberRegex.test(password)) {
         passwordError.innerText = "Password needs to have at least 1 number";
-        validPassword = false;
-        return;
+        return false;
     }
     passwordError.innerText = "";
-    validPassword = true;
+    return true;
 }
 
 function checkForm(e) {
+    let validUsername = checkUsername();
+    let validPassword = checkPassword();
     if(!validUsername || !validPassword) {
         e.preventDefault();
     }

@@ -3,6 +3,7 @@ let quizQuestions = [];
 let score = 0;
 let qNumber = 0;
 const form = document.getElementById("quiz");
+const display = document.getElementById("scoreDisplay");
 
 fetch('/Mitchell_BCS350_Project2/backend/questions.json')
     .then(response => response.json())
@@ -74,4 +75,5 @@ function endGame() {
     //if userhigh score, set new high score
     //if total high score, set top high score
     window.location.href="/results.html";
+    display.innerText = "Final Score: " + score;
 }

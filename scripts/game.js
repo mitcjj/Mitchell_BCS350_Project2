@@ -19,7 +19,7 @@ fetch('/Mitchell_BCS350_Project2/backend/questions.json')
 function setQuestions() {
     for (let i = 0; i < 10; i++) {
         let question = questions[Math.floor(Math.random() * questions.length)];
-        quizQuestions.push(questions[question]);
+        quizQuestions.push(question);
     }
 }
 
@@ -30,19 +30,19 @@ function getQuestion() {
         "Question #" + (qNumber + 1);
 
     document.getElementById("question").innerText =
-        currentQuestion["question"];
+        currentQuestion.question;
 
     document.getElementById("answer1Label").innerText =
-        currentQuestion["A"];
+        currentQuestion.A;
 
     document.getElementById("answer2Label").innerText =
-        currentQuestion["B"];
+        currentQuestion.B;
 
     document.getElementById("answer3Label").innerText =
-        currentQuestion["C"];
+        currentQuestion.C;
 
     document.getElementById("answer4Label").innerText =
-        currentQuestion["D"];
+        currentQuestion.D;
 
     document.querySelectorAll('input[name="answer"]')
         .forEach(r => r.checked = false);

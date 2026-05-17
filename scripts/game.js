@@ -74,6 +74,6 @@ function checkAnswer() {
 function endGame() {
     //if userhigh score, set new high score
     //if total high score, set top high score
-    window.location.href="/results.html";
+    window.location.href="/Mitchell_BCS350_Project2/results.html";
     display.innerText = "Final Score: " + score;
 }

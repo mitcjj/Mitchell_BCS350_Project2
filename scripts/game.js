@@ -71,5 +71,7 @@ function checkAnswer() {
 }
 
 function endGame() {
-
+    //if userhigh score, set new high score
+    //if total high score, set top high score
+    window.location.href="../results.html";
 }

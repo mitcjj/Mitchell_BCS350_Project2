@@ -1,14 +1,4 @@
-let signup = document.getElementById("signupForm");
-signup.addEventListener("submit", function(e) {
-
-    let validUsername = checkUsername();
-    let validPassword = checkPassword();
-
-    if (!validUsername || !validPassword) {
-        e.preventDefault();
-        return false;
-    }
-});
+const signup = document.getElementById("signupForm");
 
 let usernameInput = document.getElementById("username");
 usernameInput.addEventListener("change", checkUsername);
@@ -18,6 +8,21 @@ passwordInput.addEventListener("change", checkPassword);
 
 let usernameError = document.getElementById("usernameError");
 let passwordError = document.getElementById("passwordError");
+
+signup.addEventListener("submit", function(e) {
+
+    let validUsername = checkUsername();
+    let validPassword = checkPassword();
+
+    if (!validUsername || !validPassword) {
+        e.preventDefault();
+        return false;
+    }
+
+    let newPlayer = new Player(usernameInput.value, passwordInput.value);
+    window.sessionStorage.setItem("player", JSON.stringify(newPlayer));
+});
+
 
 function checkUsername() {
     let username = usernameInput.value;

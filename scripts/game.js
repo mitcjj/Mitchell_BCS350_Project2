@@ -72,7 +72,5 @@ function checkAnswer() {
 
 function endGame() {
     window.sessionStorage.setItem("score", JSON.stringify(score));
-    //if userhigh score, set new high score
-    //if total high score, set top high score
     window.location.href="/Mitchell_BCS350_Project2/results.html";
 }

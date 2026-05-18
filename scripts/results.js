@@ -17,25 +17,32 @@ if(score > player.highScore){
     newHighScore.innerText = "New High Score!";
 }
 
-//check leaderboard scores
+
 let x = parseInt(score);
 let y = player.username;
 let tempScore = 0;
 let tempUsername = "";
 let leaderboardUpdated = false;
-for(let i = 0; i < leaderboard.topScores.length; i++){
-    if(x > leaderboard.topScores[i]){
-        tempScore = leaderboard.topScores[i];
-        tempUsername = leaderboard.topPlayers[i];
+if(leaderboard.topScores.length >= 1){
+    for(let i = 0; i < leaderboard.topScores.length; i++){
+        if(x > leaderboard.topScores[i]){
+            tempScore = leaderboard.topScores[i];
+            tempUsername = leaderboard.topPlayers[i];
 
-        leaderboard.topScores[i] = x;
-        leaderboard.topPlayers[i] = y;
+            leaderboard.topScores[i] = x;
+            leaderboard.topPlayers[i] = y;
 
-        x = tempScore;
-        y = tempUsername;
-        leaderboardUpdated = true;
+            x = tempScore;
+            y = tempUsername;
+            leaderboardUpdated = true;
+        }
     }
+} else {
+    leaderboard.topScores.push(x);
+    leaderboard.topPlayers.push(y);
+    leaderboardUpdated = true;
 }
+
 if(leaderboardUpdated){
     window.sessionStorage.setItem("leaderboard", JSON.stringify(leaderboard));
     newTopScore.innerText = "New Top Score!  Congratulations!";
